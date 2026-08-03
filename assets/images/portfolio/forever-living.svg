@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Forever Living landing page preview">
+  <defs>
+    <linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A2540"/>
+      <stop offset="100%" stop-color="#2D7BFF"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#g3)"/>
+  <rect x="80" y="55" width="1040" height="640" rx="30" fill="#0A1F3A" opacity="0.88"/>
+  <rect x="130" y="120" width="940" height="220" rx="25" fill="#12345B"/>
+  <rect x="160" y="160" width="420" height="30" rx="10" fill="#D9E8FF"/>
+  <rect x="160" y="210" width="350" height="16" rx="8" fill="#B9D1FF"/>
+  <rect x="160" y="236" width="290" height="16" rx="8" fill="#B9D1FF" opacity="0.65"/>
+  <rect x="160" y="278" width="170" height="36" rx="18" fill="#2563EB"/>
+  <rect x="130" y="380" width="300" height="250" rx="22" fill="#143762"/>
+  <rect x="455" y="380" width="300" height="250" rx="22" fill="#1A457B"/>
+  <rect x="780" y="380" width="290" height="250" rx="22" fill="#1F548E"/>
+  <text x="138" y="664" fill="#E2EEFF" font-family="Inter, Arial" font-size="42" font-weight="700">Forever Living Lead Funnel</text>
+</svg>

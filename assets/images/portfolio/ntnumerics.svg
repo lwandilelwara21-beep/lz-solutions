@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="NT Numerics preview">
+  <defs>
+    <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#081A33"/>
+      <stop offset="100%" stop-color="#153E75"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#g2)"/>
+  <rect x="70" y="60" width="1060" height="630" rx="30" fill="#09172D" opacity="0.88"/>
+  <circle cx="260" cy="300" r="130" fill="#2563EB" opacity="0.55"/>
+  <circle cx="260" cy="300" r="85" fill="#98B8FF" opacity="0.66"/>
+  <rect x="430" y="190" width="580" height="34" rx="8" fill="#D8E7FF" opacity="0.9"/>
+  <rect x="430" y="246" width="500" height="18" rx="8" fill="#C9DDFF" opacity="0.68"/>
+  <rect x="430" y="280" width="540" height="18" rx="8" fill="#C9DDFF" opacity="0.5"/>
+  <rect x="430" y="340" width="250" height="210" rx="20" fill="#0F2B4F"/>
+  <rect x="700" y="340" width="310" height="210" rx="20" fill="#173D6F"/>
+  <text x="430" y="620" fill="#DBE8FF" font-family="Inter, Arial" font-size="52" font-weight="700">NT Numerics</text>
+</svg>
