@@ -1,10 +1,15 @@
 :root {
-  --navy: #081A33;
-  --deep-blue: #0A2540;
+  --navy: #061220;
+  --deep-blue: #081A33;
+  --surface: #081A33;
+  --card: #102742;
   --accent: #2563EB;
-  --accent-soft: #4F7FFB;
-  --white: #FFFFFF;
-  --muted: #9FB6D9;
+  --accent-soft: #60A5FA;
+  --white: #F8FAFC;
+  --muted: #CBD5E1;
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --danger: #EF4444;
   --glass: rgba(255, 255, 255, 0.1);
   --glass-border: rgba(255, 255, 255, 0.22);
   --shadow-soft: 0 12px 40px rgba(2, 10, 22, 0.2);
@@ -26,12 +31,12 @@ html {
 
 body {
   margin: 0;
-  font-family: "Inter", "Poppins", sans-serif;
+  font-family: "Inter", "Manrope", sans-serif;
   color: var(--white);
   background:
-    radial-gradient(circle at 15% -10%, rgba(37, 99, 235, 0.3), transparent 45%),
-    radial-gradient(circle at 90% 5%, rgba(79, 127, 251, 0.25), transparent 38%),
-    linear-gradient(140deg, #061226 0%, #081a33 48%, #0a2540 100%);
+    radial-gradient(circle at 15% -10%, rgba(37, 99, 235, 0.16), transparent 45%),
+    radial-gradient(circle at 90% 5%, rgba(96, 165, 250, 0.12), transparent 38%),
+    linear-gradient(140deg, #061220 0%, #081A33 52%, #0A1F38 100%);
   min-height: 100vh;
   line-height: 1.6;
   overflow-x: hidden;
@@ -91,7 +96,7 @@ main {
 }
 
 .section-heading h2 {
-  font-family: "Poppins", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Inter", sans-serif;
   font-size: clamp(1.95rem, 3vw, 2.9rem);
   margin: 10px 0;
   line-height: 1.2;
@@ -183,7 +188,7 @@ main {
 }
 
 .brand-name {
-  color: #FFFFFF;
+  color: var(--white);
   font-weight: 700;
   font-size: 1.18rem;
   letter-spacing: 0.01em;
@@ -256,7 +261,7 @@ main {
 
 .button-primary {
   color: var(--white);
-  background: linear-gradient(130deg, #2563EB, #4F7FFB);
+  background: linear-gradient(130deg, #2563EB, #3B82F6);
   box-shadow: 0 12px 28px rgba(37, 99, 235, 0.42);
 }
 
@@ -330,7 +335,7 @@ main {
 }
 
 .hero h1 {
-  font-family: "Poppins", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Inter", sans-serif;
   font-size: clamp(2rem, 4.2vw, 4rem);
   line-height: 1.1;
   margin: 16px 0;
@@ -376,7 +381,7 @@ main {
 .value-card h3 {
   margin: 0 0 8px;
   font-size: 1.04rem;
-  font-family: "Poppins", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Inter", sans-serif;
 }
 
 .value-card p {
@@ -494,7 +499,7 @@ main {
 .card h3,
 .card h4 {
   margin-top: 0;
-  font-family: "Poppins", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Inter", sans-serif;
 }
 
 .icon-badge {
@@ -506,7 +511,7 @@ main {
   margin-bottom: 14px;
   background: rgba(79, 127, 251, 0.2);
   border: 1px solid rgba(79, 127, 251, 0.5);
-  color: #CFE2FF;
+  color: #D7E8FF;
 }
 
 .icon-badge svg {
@@ -654,7 +659,7 @@ main {
 .price-tag {
   font-size: 2rem;
   font-weight: 700;
-  font-family: "Poppins", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Inter", sans-serif;
   margin: 0 0 14px;
 }
 
@@ -816,6 +821,284 @@ select:focus {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(4, 13, 27, 0.8);
   backdrop-filter: blur(10px);
+}
+
+.skip-link {
+  position: absolute;
+  left: 10px;
+  top: -48px;
+  z-index: 1500;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #0F2B4A;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.skip-link:focus {
+  top: 10px;
+}
+
+.nav-action .button {
+  padding: 10px 14px;
+  font-size: 0.86rem;
+}
+
+.mobile-consult-link,
+.mobile-coming-soon-link {
+  display: none;
+}
+
+.soon-badge {
+  font-size: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  padding: 2px 7px;
+  margin-left: 6px;
+}
+
+.hero-actions.hero-actions-3 {
+  gap: 10px;
+}
+
+.section-band {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(16, 39, 66, 0.28);
+}
+
+.problem-solution-grid,
+.ecosystem-grid,
+.impact-grid,
+.roadmap-grid,
+.store-grid,
+.knowledge-grid,
+.solutions-category-grid,
+.process-grid,
+.how-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.problem-solution-grid,
+.solutions-category-grid,
+.store-grid,
+.knowledge-grid,
+.process-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.impact-grid,
+.ecosystem-grid,
+.roadmap-grid,
+.how-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mini-label {
+  display: inline-block;
+  color: #CFE0F9;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.psr-line {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.psr-line strong {
+  color: #E7F0FE;
+}
+
+.counter-value {
+  font-size: clamp(1.8rem, 3.2vw, 2.8rem);
+  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.counter-label {
+  margin: 8px 0 0;
+  color: #D3E1F4;
+}
+
+.timeline-horizontal {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.timeline-horizontal::before {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 24px;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.2), rgba(37, 99, 235, 0.7), rgba(96, 165, 250, 0.2));
+}
+
+.timeline-horizontal .timeline-step {
+  z-index: 1;
+  padding: 48px 14px 14px;
+  min-height: 132px;
+}
+
+.timeline-horizontal .timeline-step::before {
+  top: 14px;
+  left: calc(50% - 9px);
+}
+
+.clientflow-mockup {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(180deg, #0E2744, #091D33);
+  overflow: hidden;
+}
+
+.mockup-header {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mockup-header span {
+  font-size: 0.84rem;
+  color: #D9E7FA;
+}
+
+.mockup-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 10px;
+  padding: 14px;
+}
+
+.mockup-panel {
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+  min-height: 146px;
+  padding: 12px;
+}
+
+.mockup-bar {
+  height: 8px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, rgba(96, 165, 250, 0.16), rgba(37, 99, 235, 0.72));
+  margin-bottom: 8px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 999px;
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  color: #B9F7CD;
+  padding: 6px 10px;
+  font-size: 0.78rem;
+}
+
+.status-pill.warning {
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #FBE3B5;
+}
+
+.testimonial-wrap {
+  position: relative;
+}
+
+.testimonial-slide {
+  display: none;
+}
+
+.testimonial-slide.active {
+  display: block;
+}
+
+.testimonial-controls {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.testimonial-controls button {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  cursor: pointer;
+}
+
+.ecosystem-card {
+  position: relative;
+}
+
+.ecosystem-card::after {
+  content: "";
+  position: absolute;
+  right: -11px;
+  top: calc(50% - 1px);
+  width: 22px;
+  height: 2px;
+  background: rgba(96, 165, 250, 0.4);
+}
+
+.ecosystem-grid .ecosystem-card:last-child::after {
+  display: none;
+}
+
+.roadmap-step {
+  border-left: 3px solid rgba(96, 165, 250, 0.56);
+}
+
+.store-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.price-placeholder {
+  color: #DCE9FC;
+  margin: 10px 0;
+}
+
+.footer-newsletter {
+  margin-top: 14px;
+  display: grid;
+  gap: 8px;
+}
+
+.newsletter-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.footer-newsletter label {
+  font-size: 0.84rem;
+}
+
+.floating-whatsapp i,
+.icon-badge i {
+  width: 20px;
+  height: 20px;
+}
+
+.location-icon i {
+  width: 16px;
+  height: 16px;
 }
 
 .footer-inner {
@@ -1238,7 +1521,7 @@ select:focus {
 
 .page-hero h1 {
   margin: 14px 0 8px;
-  font-family: "Poppins", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Inter", sans-serif;
   font-size: clamp(1.8rem, 4vw, 3rem);
 }
 
@@ -1257,7 +1540,7 @@ select:focus {
 
 .policy-content h2 {
   margin-top: 34px;
-  font-family: "Poppins", "Inter", sans-serif;
+  font-family: "Space Grotesk", "Inter", sans-serif;
 }
 
 @media (max-width: 1050px) {
@@ -1333,6 +1616,12 @@ select:focus {
     display: none;
   }
 
+  .mobile-consult-link,
+  .mobile-coming-soon-link {
+    display: inline-flex;
+    align-items: center;
+  }
+
   .mobile-toggle {
     display: inline-flex;
   }
@@ -1385,6 +1674,12 @@ select:focus {
     display: none;
   }
 
+  .mobile-consult-link,
+  .mobile-coming-soon-link {
+    display: inline-flex;
+    align-items: center;
+  }
+
   .mobile-toggle {
     display: inline-flex;
   }
@@ -1401,6 +1696,26 @@ select:focus {
   .contact-grid,
   .footer-inner {
     grid-template-columns: 1fr;
+  }
+
+  .problem-solution-grid,
+  .ecosystem-grid,
+  .impact-grid,
+  .roadmap-grid,
+  .store-grid,
+  .knowledge-grid,
+  .solutions-category-grid,
+  .process-grid,
+  .how-grid,
+  .timeline-horizontal,
+  .mockup-grid,
+  .newsletter-row {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-horizontal::before,
+  .ecosystem-card::after {
+    display: none;
   }
 
   .technologies-grid {

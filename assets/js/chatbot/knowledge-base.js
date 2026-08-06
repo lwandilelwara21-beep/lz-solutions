@@ -90,9 +90,11 @@
 
   const quickActions = [
     "View Website Packages",
+    "Visit Solutions Store",
     "Recommend a Package",
     "Explore Services",
     "View Portfolio",
+    "LZ ClientFlow",
     "Project Enquiry Page",
     "Book a Consultation",
     "Contact on WhatsApp"
@@ -101,7 +103,7 @@
   const intentReplies = [
     {
       id: "services-web",
-      patterns: ["website", "web development", "landing page", "redesign", "online shop", "e-commerce", "ecommerce", "booking system", "medical", "tutor", "student", "accommodation", "contact form", "whatsapp integration", "chatbot integration"],
+      patterns: ["website", "web development", "landing page", "redesign", "online shop", "e-commerce", "ecommerce", "booking system", "medical", "tutor", "student", "accommodation", "contact form", "whatsapp integration", "chatbot integration", "software", "dashboard", "crm", "internal tools"],
       response: "LZ Solutions builds professional business websites, landing pages, redesigns, e-commerce solutions, booking or enquiry systems (including medical, tutor/student and accommodation enquiries), contact forms, WhatsApp integration and chatbot integrations where needed."
     },
     {
@@ -111,8 +113,18 @@
     },
     {
       id: "services-automation",
-      patterns: ["automation", "n8n", "webhook", "google sheets", "lead capture"],
+      patterns: ["automation", "n8n", "webhook", "google sheets", "lead capture", "workflow", "ai automation"],
       response: "Automation services include n8n workflows, webhook-driven flows, Google Sheets automation and lead-capture process automation to reduce manual admin work."
+    },
+    {
+      id: "solutions-store",
+      patterns: ["solutions store", "store", "bundle", "business launch kit", "student productivity kit", "digital downloads"],
+      response: "The Solutions Store is a curated collection of products and services, not a checkout shop. You can request a quote or order via WhatsApp for guided support and tailored implementation."
+    },
+    {
+      id: "clientflow",
+      patterns: ["clientflow", "lz clientflow", "client portal", "portal", "invoices", "project tracking"],
+      response: "LZ ClientFlow and the Client Portal are coming soon. They are designed to help businesses manage clients, projects, invoices, payments, approvals and deadlines in one premium environment."
     },
     {
       id: "domains",
@@ -131,7 +143,7 @@
     },
     {
       id: "location",
-      patterns: ["location", "where are you", "east london", "cape town", "remote"],
+      patterns: ["location", "where are you", "east london", "cape town", "remote", "business hours", "hours"],
       response: `${business.locationLine} Business hours: ${business.businessHours}.`
     },
     {
@@ -141,7 +153,7 @@
     },
     {
       id: "contact",
-      patterns: ["consultation", "contact", "phone", "email", "linkedin", "github", "whatsapp"],
+      patterns: ["consultation", "contact", "phone", "email", "linkedin", "github", "whatsapp", "support"],
       response: `You can contact ${business.name} on ${business.phone}, email ${business.email}, WhatsApp via ${business.whatsapp}, LinkedIn at ${business.linkedin}, or GitHub at ${business.github}.`
     },
     {

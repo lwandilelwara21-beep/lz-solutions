@@ -9,7 +9,7 @@
     }
 
     const page = (window.location.pathname.split("/").pop() || "index.html").toLowerCase();
-    const mainPages = ["index.html", "about.html", "services.html", "portfolio.html", "pricing.html", "process.html", "faq.html", "contact.html", "project-enquiry.html"];
+    const mainPages = ["index.html", "about.html", "services.html", "solutions-store.html", "portfolio.html", "pricing.html", "process.html", "faq.html", "resources.html", "contact.html", "project-enquiry.html", "client-portal.html"];
     if (!mainPages.includes(page)) {
       return;
     }
@@ -200,7 +200,7 @@
     }
 
     function welcome(ui, isAutoGreeting) {
-      const greeting = "Hi \ud83d\udc4b Welcome to LZ Solutions.\n\nI'm LZ Assistant. I can help you understand our website packages, services, automation solutions, project process and how to get started.\n\nWhat would you like help with?";
+      const greeting = "Welcome to LZ Solutions.\n\nI am LZ Assistant. I can help with services, pricing, portfolio, solutions store, automation, consultations and support options.\n\nWhat would you like help with?";
       addMessage(ui, "bot", greeting);
       setQuickActions(ui, knowledge.quickActions);
       if (isAutoGreeting) {
@@ -238,9 +238,25 @@
           goToSection("pricing-preview");
           return "I have taken you to website packages. Ask me for Starter, Advanced, or Premium details when you are ready.";
         },
+        "Visit Solutions Store": () => {
+          if (page === "index.html") {
+            goToSection("store-preview");
+            return "I have taken you to the Solutions Store preview. You can open the full page for kits and bundles.";
+          }
+          window.location.href = "solutions-store.html";
+          return "Opening the Solutions Store page now.";
+        },
         "View Our Work": () => {
           goToSection("portfolio-preview");
           return "I have taken you to portfolio work. Let me know if you want a similar setup for your business.";
+        },
+        "LZ ClientFlow": () => {
+          if (page === "index.html") {
+            goToSection("clientflow");
+            return "I have taken you to LZ ClientFlow. This platform is coming soon and will include clients, projects, invoices and deadlines management.";
+          }
+          window.location.href = "client-portal.html";
+          return "Opening the Client Portal preview now.";
         },
         "Project Enquiry Page": () => {
           window.location.href = "project-enquiry.html";
@@ -645,7 +661,9 @@
       setQuickActions(ui, [
         "Find the Right Package",
         "Explore Our Services",
+        "Visit Solutions Store",
         "View Our Work",
+        "LZ ClientFlow",
         "Project Enquiry Page",
         "Start Your Project",
         "Speak to Lwandile"

@@ -6,28 +6,53 @@
 
   const navLinks = [
     { href: "index.html", label: "Home" },
-    { href: "about.html", label: "About" },
-    { href: "services.html", label: "Services" },
+    { href: "services.html", label: "Solutions" },
+    { href: "solutions-store.html", label: "Solutions Store" },
     { href: "portfolio.html", label: "Portfolio" },
     { href: "pricing.html", label: "Pricing" },
-    { href: "process.html", label: "Process" },
-    { href: "faq.html", label: "FAQ" },
+    { href: "resources.html", label: "Resources" },
+    { href: "about.html", label: "About" },
     { href: "contact.html", label: "Contact" }
   ];
 
   const quickLinks = [
-    { href: "services.html", label: "Services" },
+    { href: "services.html", label: "Solutions" },
+    { href: "solutions-store.html", label: "Solutions Store" },
     { href: "portfolio.html", label: "Portfolio" },
     { href: "pricing.html", label: "Pricing" },
-    { href: "contact.html", label: "Contact" },
-    { href: "project-enquiry.html", label: "Project Enquiry" },
+    { href: "resources.html", label: "Resources" },
+    { href: "client-portal.html", label: "Client Portal" },
     { href: "privacy.html", label: "Privacy Policy" },
-    { href: "terms.html", label: "Terms & Conditions" }
+    { href: "terms.html", label: "Terms" }
   ];
+
+  const futureArchitecture = {
+    commerce: ["Supplier partnerships", "Dropshipping", "Inventory", "Payments", "Order tracking"],
+    product: ["Customer accounts", "Booking system", "Courses", "Community", "Affiliate program"],
+    operations: ["Email marketing", "CRM integration", "LZ ClientFlow integration", "Analytics dashboard", "Invoice generation"],
+    intelligence: ["AI recommendations", "Marketplace", "Academy", "AI platform"]
+  };
 
   function currentPageName() {
     const path = window.location.pathname.split("/").pop();
     return path || "index.html";
+  }
+
+  function createSkipLink() {
+    if (document.querySelector(".skip-link")) {
+      return;
+    }
+    const link = document.createElement("a");
+    link.className = "skip-link";
+    link.href = "#main-content";
+    link.textContent = "Skip to main content";
+    document.body.insertAdjacentElement("afterbegin", link);
+
+    const main = document.querySelector("main");
+    if (main && !main.id) {
+      main.id = "main-content";
+      main.setAttribute("tabindex", "-1");
+    }
   }
 
   function injectLayout() {
@@ -49,9 +74,12 @@
             </a>
             <nav class="nav-links" id="siteNav" aria-label="Primary">
               ${navLinks.map((item) => `<a href="${item.href}">${item.label}</a>`).join("")}
+              <a href="contact.html" class="mobile-consult-link">Book Consultation</a>
+              <a href="client-portal.html" class="mobile-coming-soon-link">Client Portal <span class="soon-badge">Coming Soon</span></a>
             </nav>
             <div class="nav-action">
-              <a class="button button-primary" href="contact.html">Get Quote</a>
+              <a class="button button-outline" href="contact.html">Book Consultation</a>
+              <a class="button button-primary" href="client-portal.html">Client Portal <span class="soon-badge">Soon</span></a>
               <button class="mobile-toggle" id="mobileToggle" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation menu">☰</button>
             </div>
           </div>
@@ -73,19 +101,33 @@
               <p class="notice">Monday-Friday | 08:00-17:00 | Remote projects across South Africa</p>
             </div>
             <div>
-              <h4>Quick Links</h4>
+              <h4>Navigation</h4>
               <div class="footer-links">
                 ${quickLinks.map((item) => `<a href="${item.href}">${item.label}</a>`).join("")}
+                <a href="faq.html">FAQ</a>
+                <a href="project-enquiry.html">Project Enquiry</a>
+                <a href="contact.html">Book Consultation</a>
+                <a href="client-portal.html">Careers (Coming Soon)</a>
+                <a href="client-portal.html">Partners (Coming Soon)</a>
               </div>
             </div>
             <div>
               <h4>Contact</h4>
               <div class="footer-links">
+                <a href="https://wa.me/27695165196" target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 <a href="tel:+27695165196" aria-label="Call LZ Solutions">069 516 5196</a>
                 <a href="mailto:lwandilezengethwa772@gmail.com">lwandilezengethwa772@gmail.com</a>
                 <a href="https://www.linkedin.com/in/lwandile-zengethwa" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                 <a href="https://github.com/lwandilelwara21-beep" target="_blank" rel="noopener noreferrer">GitHub</a>
               </div>
+              <form class="footer-newsletter" data-newsletter-form>
+                <label for="newsletterEmail">Newsletter</label>
+                <div class="newsletter-row">
+                  <input id="newsletterEmail" name="newsletterEmail" type="email" placeholder="Enter your email" required>
+                  <button type="submit" class="button button-outline">Subscribe</button>
+                </div>
+                <p class="success-message" data-newsletter-success aria-live="polite"></p>
+              </form>
             </div>
           </div>
           <div class="container footer-bottom">© 2026 LZ Solutions. All rights reserved.</div>
@@ -116,7 +158,7 @@
       wa.target = "_blank";
       wa.rel = "noopener noreferrer";
       wa.setAttribute("aria-label", "Open WhatsApp chat");
-      wa.innerHTML = "💬";
+      wa.innerHTML = '<i data-lucide="message-circle" aria-hidden="true"></i>';
       document.body.appendChild(wa);
     }
 
@@ -136,6 +178,8 @@
       loading.innerHTML = `<div class="loader-ring" aria-label="Loading"></div>`;
       document.body.appendChild(loading);
     }
+
+    createSkipLink();
   }
 
   function setActiveNav() {
@@ -168,6 +212,25 @@
         button.setAttribute("aria-expanded", "false");
       }
     });
+  }
+
+  async function setupLucideIcons() {
+    const render = () => {
+      if (window.lucide && typeof window.lucide.createIcons === "function") {
+        window.lucide.createIcons();
+      }
+    };
+
+    if (window.lucide) {
+      render();
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://unpkg.com/lucide@0.462.0/dist/umd/lucide.min.js";
+    script.defer = true;
+    script.onload = render;
+    document.head.appendChild(script);
   }
 
   function setupRevealAnimations() {
@@ -273,6 +336,29 @@
     });
   }
 
+  function setupNewsletterForm() {
+    const form = document.querySelector("[data-newsletter-form]");
+    if (!form) {
+      return;
+    }
+    const success = form.querySelector("[data-newsletter-success]");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const emailInput = form.querySelector("input[name='newsletterEmail']");
+      const value = emailInput instanceof HTMLInputElement ? emailInput.value.trim() : "";
+      if (!value || !/^\S+@\S+\.\S+$/.test(value)) {
+        if (success) {
+          success.textContent = "Please enter a valid email address.";
+        }
+        return;
+      }
+      if (success) {
+        success.textContent = "Thank you. You are on the newsletter list.";
+      }
+      form.reset();
+    });
+  }
+
   function setupContactForm() {
     const form = document.querySelector("[data-contact-form]");
     if (!form) {
@@ -354,6 +440,175 @@
         success.textContent = "Thank you. Your message has been prepared successfully and we will contact you shortly.";
       }
     });
+  }
+
+  function setupImpactCounters() {
+    const counters = document.querySelectorAll("[data-counter-target]");
+    if (!counters.length) {
+      return;
+    }
+
+    const animateCounter = (counter) => {
+      const target = Number(counter.getAttribute("data-counter-target") || "0");
+      const suffix = counter.getAttribute("data-counter-suffix") || "";
+      const duration = 1300;
+      const start = performance.now();
+
+      const tick = (now) => {
+        const elapsed = now - start;
+        const progress = Math.min(1, elapsed / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const value = Math.round(target * eased);
+        counter.textContent = `${value}${suffix}`;
+        if (progress < 1) {
+          window.requestAnimationFrame(tick);
+        }
+      };
+      window.requestAnimationFrame(tick);
+    };
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach((counter) => observer.observe(counter));
+  }
+
+  function setupTestimonialsSlider() {
+    const slider = document.querySelector("[data-testimonial-slider]");
+    if (!slider) {
+      return;
+    }
+    const slides = Array.from(slider.querySelectorAll(".testimonial-slide"));
+    const prev = slider.querySelector("[data-slide-prev]");
+    const next = slider.querySelector("[data-slide-next]");
+    if (!slides.length || !(prev instanceof HTMLElement) || !(next instanceof HTMLElement)) {
+      return;
+    }
+
+    let index = 0;
+    const show = (nextIndex) => {
+      index = (nextIndex + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle("active", slideIndex === index);
+      });
+    };
+
+    prev.addEventListener("click", () => show(index - 1));
+    next.addEventListener("click", () => show(index + 1));
+    window.setInterval(() => show(index + 1), 6000);
+    show(0);
+  }
+
+  function setupMediaOptimizations() {
+    document.querySelectorAll("img").forEach((img, index) => {
+      if (!img.loading) {
+        img.loading = index < 2 ? "eager" : "lazy";
+      }
+      img.decoding = "async";
+    });
+  }
+
+  function injectStructuredData() {
+    const page = currentPageName();
+    const title = document.title;
+
+    const graph = [
+      {
+        "@type": "Organization",
+        "@id": `${BASE_URL}/#organization`,
+        name: "LZ Solutions",
+        url: BASE_URL,
+        logo: `${BASE_URL}/assets/images/logo.svg`,
+        sameAs: [
+          "https://www.linkedin.com/in/lwandile-zengethwa",
+          "https://github.com/lwandilelwara21-beep"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${BASE_URL}/#website`,
+        name: "LZ Solutions",
+        url: BASE_URL,
+        publisher: {
+          "@id": `${BASE_URL}/#organization`
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${BASE_URL}/index.html`
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: title.replace(" | LZ Solutions", ""),
+            item: `${BASE_URL}/${page}`
+          }
+        ]
+      }
+    ];
+
+    if (page === "services.html") {
+      graph.push({
+        "@type": "Service",
+        name: "Digital Solutions Services",
+        provider: { "@id": `${BASE_URL}/#organization` },
+        serviceType: ["Websites", "Software", "Automation", "Digital Growth"],
+        areaServed: "South Africa"
+      });
+    }
+
+    if (page === "solutions-store.html") {
+      graph.push({
+        "@type": "CollectionPage",
+        name: "Solutions Store",
+        description: "Curated collection of business and technology solutions."
+      });
+      graph.push({
+        "@type": "Product",
+        name: "Business Launch Kit",
+        brand: "LZ Solutions",
+        offers: {
+          "@type": "Offer",
+          priceCurrency: "ZAR",
+          price: "0",
+          availability: "https://schema.org/PreOrder"
+        }
+      });
+    }
+
+    if (page === "faq.html") {
+      graph.push({
+        "@type": "FAQPage",
+        mainEntity: Array.from(document.querySelectorAll(".faq-item")).map((item) => {
+          const q = item.querySelector(".faq-question");
+          const a = item.querySelector(".faq-answer p");
+          return {
+            "@type": "Question",
+            name: q ? q.textContent || "" : "",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: a ? a.textContent || "" : ""
+            }
+          };
+        })
+      });
+    }
+
+    const script = document.createElement("script");
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify({ "@context": "https://schema.org", "@graph": graph });
+    document.head.appendChild(script);
   }
 
   function setupParticles() {
@@ -470,17 +725,24 @@
   }
 
   function bootstrap() {
+    window.LZFutureArchitecture = futureArchitecture;
     injectLayout();
     setActiveNav();
     setupMobileNav();
+    setupLucideIcons();
     setupRevealAnimations();
     setupProgressAndBackTop();
     setupFaqAccordion();
     setupCookieBanner();
+    setupNewsletterForm();
     setupContactForm();
+    setupImpactCounters();
+    setupTestimonialsSlider();
     setupParticles();
     setupLoadingScreen();
+    setupMediaOptimizations();
     setupCanonicalAndSeoFallback();
+    injectStructuredData();
   }
 
   document.addEventListener("DOMContentLoaded", bootstrap);
