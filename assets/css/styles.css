@@ -131,9 +131,9 @@ main {
 .navbar {
   min-height: 76px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: minmax(260px, max-content) minmax(0, 1fr);
   align-items: center;
-  gap: 18px;
+  gap: 24px;
 }
 
 .nav-brand {
@@ -142,6 +142,7 @@ main {
   gap: 12px;
   justify-self: start;
   min-width: 0;
+  margin-right: 12px;
 }
 
 .brand-logo-wrap {
@@ -208,10 +209,11 @@ main {
 }
 
 .nav-links {
-  justify-self: center;
+  justify-self: end;
   display: flex;
   align-items: center;
-  gap: 13px;
+  gap: 10px;
+  min-width: 0;
 }
 
 .nav-links a {
@@ -220,6 +222,7 @@ main {
   border-radius: 10px;
   font-weight: 500;
   transition: var(--transition);
+  white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -229,10 +232,7 @@ main {
 }
 
 .nav-action {
-  justify-self: end;
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
+  display: none;
 }
 
 .mobile-toggle {
@@ -839,9 +839,17 @@ select:focus {
   top: 10px;
 }
 
-.nav-action .button {
-  padding: 10px 14px;
-  font-size: 0.86rem;
+@media (max-width: 1320px) {
+  .nav-links a {
+    padding: 7px 9px;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 1160px) {
+  .brand-tagline {
+    display: none;
+  }
 }
 
 .mobile-consult-link,
@@ -1589,6 +1597,12 @@ select:focus {
     min-height: 78px;
   }
 
+  .nav-action {
+    display: inline-flex;
+    align-items: center;
+    justify-self: end;
+  }
+
   .nav-links {
     position: fixed;
     top: 83px;
@@ -1604,16 +1618,13 @@ select:focus {
     opacity: 0;
     pointer-events: none;
     transition: var(--transition);
+    justify-self: stretch;
   }
 
   .nav-links.open {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
-  }
-
-  .nav-action .button {
-    display: none;
   }
 
   .mobile-consult-link,
@@ -1662,16 +1673,13 @@ select:focus {
     opacity: 0;
     pointer-events: none;
     transition: var(--transition);
+    justify-self: stretch;
   }
 
   .nav-links.open {
     transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
-  }
-
-  .nav-action .button {
-    display: none;
   }
 
   .mobile-consult-link,

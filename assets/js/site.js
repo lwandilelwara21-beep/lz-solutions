@@ -78,8 +78,6 @@
               <a href="client-portal.html" class="mobile-coming-soon-link">Client Portal <span class="soon-badge">Coming Soon</span></a>
             </nav>
             <div class="nav-action">
-              <a class="button button-outline" href="contact.html">Book Consultation</a>
-              <a class="button button-primary" href="client-portal.html">Client Portal <span class="soon-badge">Soon</span></a>
               <button class="mobile-toggle" id="mobileToggle" aria-controls="siteNav" aria-expanded="false" aria-label="Toggle navigation menu">☰</button>
             </div>
           </div>
